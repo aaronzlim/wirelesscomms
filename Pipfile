@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+python-docs-theme = "*"
 
 [packages]
 matplotlib = "*"

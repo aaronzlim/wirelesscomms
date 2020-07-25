@@ -6,10 +6,13 @@ import numpy as np
 
 DigitalData = Union[str, bytes, bytearray, list]
 
-_REAL_INTEGER_TYPES = (int, np.uint8, np.int8, np.uint16, np.int16, np.short, np.uint32, np.int32,
-                       np.uint64, np.int64)
-_REAL_FLOAT_TYPES = (float, np.single, np.double, np.longdouble, np.float32, np.float64, np.float)
-_REAL_NUMBER_TYPES = _REAL_INTEGER_TYPES + _REAL_FLOAT_TYPES
+REAL_INTEGER_TYPES = (int, np.uint8, np.int8, np.uint16, np.int16, np.short, np.uint32, np.int32,
+                      np.uint64, np.int64)
+REAL_FLOAT_TYPES = (float, np.single, np.double, np.longdouble, np.float32, np.float64, np.float)
+REAL_NUMBER_TYPES = REAL_INTEGER_TYPES + REAL_FLOAT_TYPES
+
+COMPLEX_TYPES = (complex, np.complex, np.complex128, np.complex64,
+                 np.csingle, np.cdouble, np.longdouble)
 
 NIBBLES_PER_BYTE: int = 2
 BITS_PER_NIBBLE: int = 4
@@ -246,3 +249,8 @@ def to_binary_list(digital_data: DigitalData) -> list:
                         '/hex values as a string, bytes, bytearray, or numpy array.')
 
     return bin_arr
+
+
+def str_xor(x: str, y: str) -> str:
+    if len(x) != len(y):
+        raise ValueError(f'Inputs are different lengths {len(x)} and {len(y)}. Inputs must be the same length.')

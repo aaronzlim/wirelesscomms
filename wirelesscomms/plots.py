@@ -91,7 +91,7 @@ def inst_freq(iq: np.ndarray, fs: float = 1,
         return p
 
 
-def power_spectrum(iq: np.ndarray, fs: float = 1, nfft: int = 0,
+def power_spectrum(iq: np.ndarray, fs: float = 1, nfft: int = None,
                    nci: bool = False, log_scale: bool = True,
                    normalize: bool = False,
                    grid: bool = False, show: bool = False):
@@ -116,7 +116,7 @@ def power_spectrum(iq: np.ndarray, fs: float = 1, nfft: int = 0,
     """
 
     if not nfft:
-        nfft = len(iq) // nci
+        nfft = len(iq)
     if nci:
         nframes = len(iq) // nfft
         nsamps = nframes * nfft
